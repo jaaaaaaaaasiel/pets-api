@@ -14,7 +14,7 @@ export class LostPet {
     breed: string
     @Column()
     color: string
-    @Column({type: 'string'})
+    @Column({type: 'varchar'})
     size: PetSize
     @Column()
     description: string

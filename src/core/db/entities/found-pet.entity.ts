@@ -2,7 +2,7 @@ import { PetSize } from "src/core/enums/PetSize.enum";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import type { Point } from "typeorm";
 
-@Entity('lost_pet')
+@Entity('found_pet')
 export class FoundPet {
     @PrimaryGeneratedColumn()
     id!: number
@@ -12,7 +12,7 @@ export class FoundPet {
     breed: string
     @Column()
     color: string
-    @Column({type: 'string'})
+    @Column({type: 'varchar'})
     size: PetSize
     @Column()
     description: string
