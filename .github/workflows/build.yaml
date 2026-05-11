@@ -35,5 +35,5 @@ jobs:
         with: 
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}:${{ github.sha }}
-            ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}:latest
+            ${{ env.REGISTRY }}/${{ secrets.DOCKER_USER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ secrets.DOCKER_USER }}/${{ env.IMAGE_NAME }}:latest
