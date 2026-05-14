@@ -15,6 +15,6 @@ COPY . .
 # Compilar el proyecto
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE 4000
 # Elegir un comando de inicio
 CMD ["node", "dist/main.js"]

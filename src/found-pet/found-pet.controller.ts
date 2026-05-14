@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { FoundPetService } from './found-pet.service';
 import type { FoundPetDTO } from 'src/core/interfaces/FoundPetDTO.interface';
 
@@ -10,10 +10,16 @@ export class FoundPetController {
 
     @Post()
     async createFoundPet(@Body() foundPet: FoundPetDTO){
-        const res = await this.foundPetService.createFoundPet(foundPet);
-        const lat = foundPet.location.lat;
-        const lon = foundPet.location.lon;
-        this.foundPetService.getPetsByRadius(lat, lon, 500);
+        const email = await this.foundPetService.createFoundPet(foundPet);
+        const { lat, lon } = foundPet.location;
+        const nearbyPets = await this.foundPetService.getPetsByRadius(lat, lon, 500);
+
+        return {email, nearbyPets};
+    }
+
+    @Get()
+    async getFoundPet(){
+        const res = this.foundPetService.getFoundPets();
         return res;
     }
 
