@@ -11,6 +11,9 @@ export class FoundPetController {
     @Post()
     async createFoundPet(@Body() foundPet: FoundPetDTO){
         const res = await this.foundPetService.createFoundPet(foundPet);
+        const lat = foundPet.location.lat;
+        const lon = foundPet.location.lon;
+        this.foundPetService.getPetsByRadius(lat, lon, 500);
         return res;
     }
 
